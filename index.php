@@ -77,9 +77,9 @@ $resultat = $bdd->query("SELECT * FROM meteo");
             ];
             
             if (!empty($_POST['checked'])) { 
-                $donnee = (int) $_POST['checked'];
+                $donnee =  $_POST['checked'];
                 var_dump($donnee);
-                $del = 'DELETE FROM meteo WHERE id ='.$donnee;
+                $del = 'DELETE FROM meteo WHERE id = ?';
                 $bdd->prepare($del)->execute($donnee);  
             }
             try

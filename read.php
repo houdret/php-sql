@@ -23,9 +23,16 @@ $resultat = $bdd->query("SELECT * FROM hiking");
         <table class="table table-striped">
             <?php while ($donnees = $resultat->fetch())
                 {
-                    echo '<tr> <td><a href="update.php" id="'.$donnees['id'].'">'.$donnees['name'].'</a></td><td>'.$donnees['difficulté'].'</td><td>'.$donnees['distanceas'].'</td>
-                    <td>'.$donnees['duration'].'</td><td>'.$donnees['height_difference'].'<a href="delete.php"><button type="submit" name="del" id="'.$donnees['id'].'" class="btn btn-danger ms-3">Delete</button></a></td></tr>';
+                    ?>
+                    <form action="update.php" method="post">
+                   
+                    <?php
+                    echo '<tr> <td><input name="name" value="'.$donnees['name'].'" ></td><td><input name="difficulty" value="'.$donnees['difficulty'].'"></td><td><input name="distance" value="'.$donnees['distance'].'"></td>
+                    <td><input name="duration" value="'.$donnees['duration'].'"></td><td><input name="height_difference" value="'.$donnees['height_difference'].'"> <input type="submit" name="update" value="Update" class="btn btn-primary ms-3" /> </form>
+                    </td></tr>';
+                    echo '<tr><td><form action="delete.php" method="post"><button type="submit" name="id" value="'.$donnees['id'].'" class="btn btn-danger">Delete</button></td></tr>';
                 } ?> 
+                 </form>
         </table>
         
         </div>

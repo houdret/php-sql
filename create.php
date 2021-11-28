@@ -42,6 +42,7 @@
 		<button type="submit" name="button" class="btn btn-primary mb-3">Envoyer</button>
 	</form>
     <?php
+    error_reporting(E_ALL ^ E_WARNING);
     if (isset($_POST['button'])) {
             $errors = array();      
             $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
@@ -84,10 +85,10 @@
             try
             {
                 $bdd = new PDO('mysql:host=localhost;dbname=becode', 'root', '');
-                var_dump($bdd);
+               
                 $insertion =
                 'INSERT INTO hiking (name, difficulty, distance, duration, height_difference ) VALUES (:name,:difficulty,:distance,:duration,:height_difference)';
-                var_dump($insertion);
+              
                 $bdd->prepare($insertion)->execute($data);
                 
                 if ($bdd == true) {

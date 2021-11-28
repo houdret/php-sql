@@ -27,8 +27,12 @@
                 <td><a href="/php-sql/crud/update_spectacle.php" class="text-decoration-none">Pour modifier un shows</a></td>
                 <td> <a href="/php-sql/crud/update_client_5.php" class="text-decoration-none">Pour modifier le client n° 5</a></td>
                 <td> <a href="/php-sql/crud/create.php"class="text-decoration-none">Pour create un client</a></td>
-                <td> <a href="/php-sql/crud/create_spectacle.php" class="text-decoration-none">Pour create un show</a></td>
-                </tr>
+                </tr><tr><td> <a href="/php-sql/crud/create_spectacle.php" class="text-decoration-none">Pour create un show</a></td>
+                <td> <a href="/php-sql/crud/create_cl_24_25.php" class="text-decoration-none">Pour supprimer 2 clients</a></td>
+                <td> <a href="/php-sql/crud/Delete_reservation.php" class="text-decoration-none">Pour supprimer 2 réservations</a></td>
+                <td> <a href="/php-sql/crud/Delete_billets.php" class="text-decoration-none">Pour supprimer 2 billets</a></td>
+                
+            </tr>
             </table>
         
         

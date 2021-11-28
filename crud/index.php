@@ -22,6 +22,18 @@
     </head>
     <body>
         <div class="container">
+            <table class="table table-striped">
+                <tr><td><a href="/php-sql/crud/update.php" class="text-decoration-none">Pour modifier un client</a></td>
+                <td><a href="/php-sql/crud/update_spectacle.php" class="text-decoration-none">Pour modifier un shows</a></td>
+                <td> <a href="/php-sql/crud/update_client_5.php" class="text-decoration-none">Pour modifier le client n° 5</a></td>
+                <td> <a href="/php-sql/crud/create.php"class="text-decoration-none">Pour create un client</a></td>
+                <td> <a href="/php-sql/crud/create_spectacle.php" class="text-decoration-none">Pour create un show</a></td>
+                </tr>
+            </table>
+        
+        
+       
+       
         <h1>Liste des clients</h1>
        
         <table class="table table-striped">

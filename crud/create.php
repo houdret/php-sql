@@ -13,7 +13,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=colyseum', 'root', '');
 </head>
 <body>
     <div class="container">
-    <a href="index.php">Liste des données</a>
+    <a href="index.php" class="text-decoration-none">Liste des données</a>
 	<h1>Ajouter</h1>
 	<form action="" method="post" class=" was-validated row g-1 ">
 		<div>

@@ -1,8 +1,10 @@
 <?php
 $bdd = new PDO('mysql:host=localhost;dbname=becode', 'root', '');
-//$resultat = $bdd->query("SELECT * FROM hiking");
-if (isset($_POST['update'])) {
+
+if (isset($_POST['name'])) {
     $name = $_POST['name'];
+    $resultat = $bdd->query('SELECT * FROM hiking WHERE name="'.$name.'"');
+    
 }
 ?>
 <!DOCTYPE html>
@@ -17,16 +19,19 @@ if (isset($_POST['update'])) {
         <div class="container">
         <a href="/php-sql/read.php">Liste des données</a>
         <h1>Update</h1>
+        <?php while ($fetch = $resultat->fetch()) {
+            # code...
+         ?>
         <form action="" method="post" class=" was-validated row g-1 ">
             <div>
                 <label for="name" class="form-label">Name</label>
-                <input type="text" name="name" value="<?= $_POST['name']; ?>" class="form-control is-valid" required>
+                <input type="text" name="name" value="<?= $fetch['name']; ?>" class="form-control is-valid" required>
             </div>
 
             <div>
                 <label for="difficulty" class="form-label">Difficulté</label>
                 <select name="difficulty" class="form-select">
-                    <option selected><?= $_POST['difficulty']; ?></option>
+                    <option selected><?= $fetch['difficulty']; ?></option>
                     <option value="Très facile">Très facile</option>
                     <option value="Facile">Facile</option>
                     <option value="Moyen">Moyen</option>
@@ -37,19 +42,20 @@ if (isset($_POST['update'])) {
 
             <div>
                 <label for="distance" class="form-label">Distance</label>
-                <input type="text" name="distance" value="<?= $_POST['distance']; ?>" class="form-control is-valid" required>
+                <input type="text" name="distance" value="<?= $fetch['distance']; ?>" class="form-control is-valid" required>
             </div>
             <div>
                 <label for="duration" class="form-label">Durée</label>
-                <input type="time" name="duration" value="<?= $_POST['duration']; ?>" class="form-control is-valid" required>
+                <input type="time" name="duration" value="<?= $fetch['duration']; ?>" class="form-control is-valid" required>
             </div>
             <div>
                 <label for="height_difference" class="form-label">Dénivelé</label>
-                <input type="text" name="height_difference" value="<?= $_POST['height_difference']; ?>" class="form-control is-valid" required>
+                <input type="text" name="height_difference" value="<?= $fetch['height_difference']; ?>" class="form-control is-valid" required>
             </div>
             <button type="submit" name="button" class="btn btn-primary mb-3">Envoyer</button>
         </form>
         <?php
+        }
         if (isset($_POST['button'])) {
                 $errors = array();      
                 $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
@@ -91,13 +97,12 @@ if (isset($_POST['update'])) {
                 {
                     
                    
-                    $insertion =
-                    'INSERT INTO hiking (name, difficulty, distance, duration, height_difference ) VALUES (:name,:difficulty,:distance,:duration,:height_difference)';
-                    var_dump($insertion);
-                    $bdd->prepare($insertion)->execute($data);
+                    $update =$bdd->prepare('UPDATE hiking SET name=:name, difficulty=:difficulty, distance=:distance, duration=:duration, height_difference=:height_difference WHERE name=:name ');
+                   
+                    $update->execute($data);
                     
                     if ($bdd == true) {
-                        echo '<div class="alert alert-success" role="alert">les données ont bien été enregistrées! </div>';
+                        echo '<div class="alert alert-success" role="alert">les données ont bien été uploader! </div>';
                     } 
                 }
                 catch(Exception $e)

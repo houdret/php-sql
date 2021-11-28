@@ -1,6 +1,6 @@
 <?php
 $bdd = new PDO('mysql:host=localhost;dbname=becode', 'root', '');
-//$resultat = $bdd->query("SELECT * FROM hiking");
+
 
 ?>
 <!DOCTYPE html>
